@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="TDE03.MainPage"
+             Title="TDE03">
+    <ScrollView>
+        <VerticalStackLayout Padding="24" Spacing="14" VerticalOptions="Center">
+            <Label Text="TDE03" FontSize="30" FontAttributes="Bold" HorizontalOptions="Center" />
+            <Button Text="Cadastro de Clientes" Clicked="btClientes_Clicked" />
+            <Button Text="Cadastro de Produtos" Clicked="btProdutos_Clicked" />
+            <Button Text="Cadastro de Compras" Clicked="btCompras_Clicked" />
+            <Button Text="Cadastro de Itens da Compra" Clicked="btItens_Clicked" />
+            <Button Text="Configurar Firebase" Clicked="btConfiguracao_Clicked" />
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

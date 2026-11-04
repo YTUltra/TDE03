@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="TDE03.View.CadastroProdutosPage"
+             Title="Cadastro de Produtos">
+    <ScrollView>
+        <VerticalStackLayout Padding="16" Spacing="10">
+            <Label Text="Cadastro de Produtos" FontSize="24" FontAttributes="Bold" />
+            <Label Text="ID do Produto:" />
+            <HorizontalStackLayout Spacing="8">
+                <Entry x:Name="txID" Placeholder="Código" HorizontalOptions="FillAndExpand" />
+                <Button Text="Consultar" Clicked="btConsultar_Clicked" />
+                <Button Text="Limpar" Clicked="btLimpar_Clicked" />
+            </HorizontalStackLayout>
+            <Label Text="Nome:" /><Entry x:Name="txNome" Placeholder="Nome (máximo 50 caracteres)" MaxLength="50" />
+            <Label Text="Tipo:" /><Entry x:Name="txTipo" Placeholder="Tipo (máximo 50 caracteres)" MaxLength="50" />
+            <Label Text="Preço:" /><Entry x:Name="txPreco" Keyboard="Numeric" Placeholder="0,00" />
+            <Label Text="Quantidade em estoque:" /><Entry x:Name="txEstoque" Keyboard="Numeric" Placeholder="0" />
+            <HorizontalStackLayout Spacing="8" HorizontalOptions="Center">
+                <Button Text="Incluir" Clicked="btIncluir_Clicked" /><Button Text="Alterar" Clicked="btAlterar_Clicked" /><Button Text="Excluir" Clicked="btExcluir_Clicked" />
+            </HorizontalStackLayout>
+            <SearchBar x:Name="sbBusca" Placeholder="Buscar produto" TextChanged="sbBusca_TextChanged" />
+            <CollectionView x:Name="lvProdutos" SelectionMode="Single" SelectionChanged="lvProdutos_SelectionChanged">
+                <CollectionView.ItemTemplate><DataTemplate>
+                    <Border Padding="10" Margin="2" Stroke="#CCCCCC" StrokeShape="RoundRectangle 8">
+                        <VerticalStackLayout>
+                            <Label Text="{Binding Id, StringFormat='ID: {0}'}" FontAttributes="Bold" />
+                            <Label Text="{Binding Nome, StringFormat='Nome: {0}'}" />
+                            <Label Text="{Binding Tipo, StringFormat='Tipo: {0}'}" />
+                            <Label Text="{Binding Preco, StringFormat='Preço: {0:C}'}" />
+                            <Label Text="{Binding QuantidadeEstoque, StringFormat='Estoque: {0}'}" />
+                        </VerticalStackLayout>
+                    </Border>
+                </DataTemplate></CollectionView.ItemTemplate>
+            </CollectionView>
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

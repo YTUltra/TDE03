@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="TDE03.View.CadastroClientesPage"
+             Title="Cadastro de Clientes">
+    <ScrollView>
+        <VerticalStackLayout Padding="16" Spacing="10">
+            <Label Text="Cadastro de Clientes" FontSize="24" FontAttributes="Bold" />
+            <Label Text="ID do Cliente:" />
+            <HorizontalStackLayout Spacing="8">
+                <Entry x:Name="txID" Placeholder="Código" HorizontalOptions="FillAndExpand" />
+                <Button Text="Consultar" Clicked="btConsultar_Clicked" />
+                <Button Text="Limpar" Clicked="btLimpar_Clicked" />
+            </HorizontalStackLayout>
+            <Label Text="Nome:" />
+            <Entry x:Name="txNome" Placeholder="Digite o nome (máximo 50 caracteres)" MaxLength="50" />
+            <Label Text="RG:" />
+            <Entry x:Name="txRG" Placeholder="Digite o RG (máximo 10 dígitos)" Keyboard="Numeric" MaxLength="10" />
+            <Label Text="Telefone:" />
+            <Entry x:Name="txTelefone" Placeholder="Digite o telefone (máximo 14 caracteres)" Keyboard="Telephone" MaxLength="14" />
+            <HorizontalStackLayout Spacing="8" HorizontalOptions="Center">
+                <Button Text="Incluir" Clicked="btIncluir_Clicked" />
+                <Button Text="Alterar" Clicked="btAlterar_Clicked" />
+                <Button Text="Excluir" Clicked="btExcluir_Clicked" />
+            </HorizontalStackLayout>
+            <SearchBar x:Name="sbBusca" Placeholder="Buscar cliente" TextChanged="sbBusca_TextChanged" />
+            <CollectionView x:Name="lvClientes" SelectionMode="Single" SelectionChanged="lvClientes_SelectionChanged">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Border Padding="10" Margin="2" Stroke="#CCCCCC" StrokeShape="RoundRectangle 8">
+                            <VerticalStackLayout>
+                                <Label Text="{Binding Id, StringFormat='ID: {0}'}" FontAttributes="Bold" />
+                                <Label Text="{Binding Nome, StringFormat='Nome: {0}'}" />
+                                <Label Text="{Binding Rg, StringFormat='RG: {0}'}" />
+                                <Label Text="{Binding Telefone, StringFormat='Telefone: {0}'}" />
+                            </VerticalStackLayout>
+                        </Border>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

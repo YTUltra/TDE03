@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="TDE03.View.CadastroItensPage"
+             Title="Cadastro de Itens da Compra">
+    <ScrollView>
+        <VerticalStackLayout Padding="16" Spacing="10">
+            <Label Text="Cadastro de Itens da Compra" FontSize="24" FontAttributes="Bold" />
+            <Label Text="ID do Item:" />
+            <HorizontalStackLayout Spacing="8">
+                <Entry x:Name="txID" Placeholder="Código" HorizontalOptions="FillAndExpand" />
+                <Button Text="Consultar" Clicked="btConsultar_Clicked" />
+                <Button Text="Limpar" Clicked="btLimpar_Clicked" />
+            </HorizontalStackLayout>
+            <Label Text="Código do Produto:" /><Entry x:Name="txProduto" Placeholder="ID do produto" />
+            <Label Text="Código da Compra:" /><Entry x:Name="txCompra" Placeholder="ID da compra" />
+            <Label Text="Quantidade:" /><Entry x:Name="txQuantidade" Keyboard="Numeric" Placeholder="1" />
+            <Label x:Name="lbValores" Text="Valor unitário: R$ 0,00 | Parcial: R$ 0,00" />
+            <HorizontalStackLayout Spacing="8" HorizontalOptions="Center">
+                <Button Text="Incluir" Clicked="btIncluir_Clicked" /><Button Text="Alterar" Clicked="btAlterar_Clicked" /><Button Text="Excluir" Clicked="btExcluir_Clicked" />
+            </HorizontalStackLayout>
+            <SearchBar x:Name="sbBusca" Placeholder="Buscar item" TextChanged="sbBusca_TextChanged" />
+            <CollectionView x:Name="lvItens" SelectionMode="Single" SelectionChanged="lvItens_SelectionChanged">
+                <CollectionView.ItemTemplate><DataTemplate>
+                    <Border Padding="10" Margin="2" Stroke="#CCCCCC" StrokeShape="RoundRectangle 8">
+                        <VerticalStackLayout>
+                            <Label Text="{Binding Id, StringFormat='ID: {0}'}" FontAttributes="Bold" />
+                            <Label Text="{Binding CodigoProduto, StringFormat='Produto: {0}'}" />
+                            <Label Text="{Binding CodigoCompra, StringFormat='Compra: {0}'}" />
+                            <Label Text="{Binding Quantidade, StringFormat='Quantidade: {0}'}" />
+                            <Label Text="{Binding ValorUnitario, StringFormat='Valor unitário: {0:C}'}" />
+                            <Label Text="{Binding ValorParcial, StringFormat='Valor parcial: {0:C}'}" />
+                        </VerticalStackLayout>
+                    </Border>
+                </DataTemplate></CollectionView.ItemTemplate>
+            </CollectionView>
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>
